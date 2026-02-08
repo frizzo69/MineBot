@@ -3,38 +3,38 @@ import os
 import asyncio
 from discord.ext import commands
 
-# 1. Setup Intents
+# 1. Setup Intents (Must be enabled in Developer Portal)
 intents = discord.Intents.default()
 intents.message_content = True 
 intents.members = True
 
 bot = commands.Bot(command_prefix="-", intents=intents)
 
-# 2. Function to load cogs
+# 3. Load Commands
 async def load_extensions():
-    # Looks for files in the 'cogs' folder ending in .py
+    # Create folder if it doesn't exist
+    if not os.path.exists('./commands'):
+        os.makedirs('./commands')
+
+    # Load all .py files in the commands folder
     for filename in os.listdir('./commands'):
         if filename.endswith('.py'):
-            await bot.load_extension(f'cogs.{filename[:-3]}')
-            print(f"✅ Loaded extension: {filename}")
+            try:
+                await bot.load_extension(f'commands.{filename[:-3]}')
+                print(f"✅ Loaded extension: {filename}")
+            except Exception as e:
+                print(f"❌ Failed to load {filename}: {e}")
 
 @bot.event
 async def on_ready():
-    print(f'🤖 Logged in as {bot.user} (ID: {bot.user.id})')
+    print(f'🤖 Bot Online: {bot.user} (ID: {bot.user.id})')
     print('------')
 
 async def main():
     async with bot:
         await load_extensions()
-        # Get token from Replit Secrets (Environment Variables)
-        try:
-            await bot.start(os.environ['TOKEN'])
-        except KeyError:
-            print("❌ Error: 'TOKEN' not found in Secrets.")
+        # Get token from Replit Secrets
+        await bot.start(os.environ['TOKEN'])
 
 if __name__ == '__main__':
-    try:
-        asyncio.run(main())
-    except KeyboardInterrupt:
-        # Handle manual stop gracefully
-        pass
+    asyncio.run(main())
