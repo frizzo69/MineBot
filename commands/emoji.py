@@ -19,7 +19,7 @@ class EmojiManager(commands.Cog):
             return None
         return None
 
-    @commands.command(name="upload_emoji", aliases=["stealemoji", "addemoji"])
+    @commands.command(name="upload_emoji", aliases=["stealemoji", "addemoji", "emoji"])
     @commands.has_permissions(manage_emojis=True)
     async def upload_emoji(self, ctx, *, content: str):
         """
@@ -90,7 +90,7 @@ class EmojiManager(commands.Cog):
 
         await msg.edit(content=f"✅ Successfully uploaded **{count}** emoji(s)!")
 
-    @commands.command(name="upload_sticker", aliases=["stealsticker","sticker"])
+    @commands.command(name="upload_sticker", aliases=["stealsticker", "sticker"])
     @commands.has_permissions(manage_emojis=True)
     async def upload_sticker(self, ctx):
         """Steals a sticker from a reply or message attachment."""
