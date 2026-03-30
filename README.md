@@ -6,9 +6,8 @@ Configure json files according to your needs (all json value can be edited using
 
 ## Hosting the bot
 use release v1 if you want to host on replit 
-fork the repo if you want to run on railway (just slightly different) 
 
-Change how TOKEN is fetched according to your needs.
+just add bot token in env file and.. yeah run main.py
 
 I'm not responsible for any misuse.
 
