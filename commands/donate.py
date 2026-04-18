@@ -11,7 +11,7 @@ class Donate(commands.Cog):
         """Displays donation information including Crypto, UPI, and a QR code."""
         
         # --- CONFIGURATION: REPLACE THESE WITH YOUR ACTUAL DETAILS ---
-        upi_id = "your_upi_id@bank"
+        upi_id = "Contact @frexy69"
         btc_address = "bc1qzm774vruyrgggqv2wwgs0pr3qdwc5e03r88hts"
         eth_address = "0xA7C049eCaCC7df183b01ab5653B11C599aBE27ae"
         ltc_address = "ltc1qczgu6hl7xksc7ga62r222urvad6lek89jtj99l"
